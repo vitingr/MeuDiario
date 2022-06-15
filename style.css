@@ -1,0 +1,797 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* CORES
+
+    --cormenu: rgb(227, 230, 233);
+    --cor1: #111440;
+    --cor2: #191C59;
+    --cor3: #38358C;
+    --cor4: #8B89D9;
+    --cor5: #333;
+    --cor6: rgba(51, 51, 51, 0.089);
+    --cor7: white;
+    --cor8: background: rgba(51, 51, 51, 0.089);;
+
+.dark {
+    --cormenu: #273340;
+    --cor1: #8B89D9;
+    --cor2: #191C59;
+    --cor3: #38358C;
+    --cor4: #8B89D9;
+    --cor5: #8B89D9;
+    --cor6: rgba(51, 51, 51, 0.089);
+    --cor7: #15202b;
+    --cor8: rgba(240, 248, 255, 0.123);
+    --cor9: white;
+    --cor10: white;
+    --cor11: #38358C;
+}
+
+    --cormenu: #181818;
+    --cor1: #8B89D9;
+    --cor2: #191C59;
+    --cor3: #38358C;
+    --cor4: #8B89D9;
+    --cor5: #8B89D9;
+    --cor6: rgba(51, 51, 51, 0.089);
+    --cor7: #1d1d1d;
+    --cor8: rgba(240, 248, 255, 0.123);
+    --cor9: white;
+    --cor10: white;
+    --cor11: white;
+*/
+
+:root {
+    --cormenu: rgb(227, 230, 233);
+    --cor1: #111440;
+    --cor2: #191C59;
+    --cor3: #38358C;
+    --cor4: #8B89D9;
+    --cor5: #333;
+    --cor6: rgba(51, 51, 51, 0.089);
+    --cor7: white;
+    --cor8: rgba(51, 51, 51, 0.089);
+    --cor9: #333;
+    --cor10: white;
+    --cor11: #38358C;
+    --cor12: #38358C;
+}
+
+.dark {
+    --cormenu: #1d2630;
+    --cor1: #8B89D9;
+    --cor2: #191C59;
+    --cor3: #38358C;
+    --cor4: #8B89D9;
+    --cor5: #8B89D9;
+    --cor6: rgba(51, 51, 51, 0.089);
+    --cor7: #0d141b;
+    --cor8: rgba(240, 248, 255, 0.123);
+    --cor9: white;
+    --cor10: white;
+    --cor11: white;
+    --cor12: rgb(184, 122, 212);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0; 
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--cor7);
+}
+
+/* MENU DE NAVEGAÇÃO */
+
+.nav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    width: 70px;
+    box-sizing: initial;
+    border-radius: 10px;
+    border-left: 5px solid var(--cormenu);
+    background: var(--cormenu);
+    transition: width 0.4s ease-in-out;
+    overflow-x: hidden;
+}
+
+.nav.active {
+    width: 300px;
+}
+
+.nav ul {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 40px;
+}
+
+.nav ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.nav ul li.active {
+    background: var(--cor7);
+}
+
+.nav ul li a {
+    background: var(--cormenu);
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--cor9);
+    transition: ease-in-out;
+    transition-duration: 0.25s;
+}
+
+.nav ul li a:hover {
+    border-radius: 7.5px;
+    background: var(--cor8);
+}
+
+.nav ul li.active a {
+    color: var(--cor10);
+    background: var(--cor5);
+}
+
+.nav ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 48px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.nav ul li a .icon ion-icon {
+    font-size: 1.5em;
+}
+
+.nav ul li a .title {
+    position: relative;
+    display: block;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 60px;
+    white-space: normal;
+}
+
+/* TOGGLE 1 */
+
+.toggle {
+    overflow-x: hidden;
+    color: aliceblue;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--cor5);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.toggle:hover {
+    background: var(--cor12);
+}
+
+.toggle.active {
+    background: var(--cor5);
+}
+
+.toggle.active:hover {
+    background: var(--cor12);
+}
+
+.toggle ion-icon {
+    position: absolute;
+    color: var(--cor7);
+    font-size: 34px;
+    display: none;
+}
+
+.toggle ion-icon.open {
+    display: block;
+}
+
+.toggle.active ion-icon.close {
+    display: block;
+
+}
+
+.toggle ion-icon.close {
+    display: none;
+}
+
+.toggle.active ion-icon.open {
+    display: none;
+}
+
+/* TOGGLE 2 */
+
+.temaescuro {
+    color: aliceblue;
+    position: fixed;
+    top: 75px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--cor5);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.temaescuro:hover {
+    background: var(--cor12);
+}
+
+.temaescuro.ativar {
+    background: var(--cor5);
+}
+
+.temaescuro.ativar:hover {
+    background: var(--cor12);
+}
+
+.temaescuro ion-icon {
+    position: absolute;
+    color: var(--cor7);
+    font-size: 34px;
+    display: none;
+}
+
+.temaescuro ion-icon.abrir {
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+    display: block;
+}
+
+.temaescuro.ativar ion-icon.fechar {
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+    display: block;
+
+}
+
+.temaescuro ion-icon.fechar {
+    display: none;
+}
+
+.temaescuro.ativar ion-icon.abrir {
+    display: none;
+}
+
+
+/* BACKGROUNDS */
+
+.foto-principal {
+    border-top-left-radius: 7.5px;
+    border-top-right-radius: 7.5px;
+    position: relative;
+    max-width: 1250px;
+    width: 100%;
+    height: 450px;
+    cursor: default;
+}
+
+#inicio {
+    background: url(bg1-novo.jpg);
+    background-attachment: fixed;
+}
+
+#dia1 {
+    background: url(frio2.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: bottom;
+}
+
+#dia2 {
+    background: url(dia2.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+}
+
+#dia3 {
+    background: url(maes.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: bottom;
+}
+
+#dia4 {
+    background: url(caminho.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia5 {
+    background: url(quadra.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
+}
+
+#dia6 {
+    background: url(casamento.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia7 {
+    background: url(lago.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia8 {
+    background: url(mercado.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia9 {
+    background: url(rua.jpg);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia10 {
+    background: url(gift.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: bottom; 
+}
+
+#dia11 {
+    background: url(dif.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia12 {
+    background: url(osb.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia13 {
+    background: url(obmep.PNG);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: bottom; 
+}
+
+#dia14 {
+    background: url(frio.jpg);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center; 
+}
+
+#dia15 {
+    background: url(nenem1.PNG);
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: unset; 
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.conteudo {
+    min-height: 100vh;
+    position: relative;
+    height: 100%;
+    background: var(--cormenu);
+    width: 1250px;
+    margin: 25px auto 10px auto;
+    border-radius: 5px;
+}
+
+.titulo {
+    color: var(--cor9);
+    font-size: 25px;
+    margin: 20px auto 20px auto;
+    text-align: center;
+    transition: ease-in-out;
+    transition-duration: 0.25s;
+    cursor: pointer;
+}
+
+.titulo:hover {
+    color: var(--cor1);
+}
+
+.texto {
+    color: var(--cor9);
+    margin: 0px 50px 15px 50px;
+    text-align: justify;
+    font-size: 16.5px;
+}
+
+.anterior {
+    font-size: 17.5px;
+    font-weight: bold;
+    margin-left: 50px;
+    text-decoration: none;
+    text-align: left;
+    position: relative;
+    transition: ease-in-out;
+    transition-duration: 0.25s;
+}
+
+.proximo {
+    font-size: 17.5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 1025px;
+    position: relative;
+    transition: ease-in-out;
+    transition-duration: 0.25s;
+}
+
+.anterior:hover {
+    color: var(--cor3);
+}
+
+.proximo:hover {
+    color: var(--cor3);
+}
+
+/* RELOGIO */
+
+.horario {
+    color: var(--cor5);
+    font-size: 17.5px;
+    position: fixed;
+    right: 25px;
+    top: 130px;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+}
+
+.horario:hover {
+    cursor: pointer;
+    color:  var(--cor11);
+}
+
+/* BOTÃO */
+
+.botao {
+    margin-left: 567.5px;
+    padding: 0.8em 1.8em;
+    border: 1px solid #8B89D9;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: var(--cor5);
+}
+   
+.botao::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #8B89D9;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+   
+.botao:hover::before {
+    width: 105%;
+}
+   
+.botao:hover {
+    cursor: pointer;
+    color: var(--cor9);
+}
+
+.button {
+    color: var(--cor11);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0);
+}
+
+
+/* DOWNLOAD DE ARQUIVOS */
+
+.download-button {
+    cursor: pointer;
+    margin: 25px 0px 50px 575px;
+    position: relative;
+    border-width: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 1;
+}
+   
+.download-button .docs {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    z-index: 1;
+    background-color: #242a35;
+    border: solid 1px #e8e8e82d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+   
+.download-button:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+   
+.download {
+    cursor: pointer;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
+    z-index: -1;
+    border-radius: 4px;
+    transform: translateY(0%);
+    background-color: #01e056;
+    border: solid 1px #01e0572d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+   
+.download-button:hover .download {
+    cursor: pointer;
+    transform: translateY(100%)
+}
+   
+.download svg polyline,.download svg line {
+    cursor: pointer;
+    animation: docs 1s infinite;
+}
+   
+@keyframes docs {
+    0% {
+     transform: translateY(0%);
+}
+   
+    50% {
+     transform: translateY(-15%);
+}
+   
+    100% {
+    transform: translateY(0%);
+}
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1270px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 1000px;
+    }
+    .texto {
+        margin: 0px 5px 15px 5px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }    
+}
+
+@media (max-width: 1230px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 800px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 750px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }  
+}
+
+@media (max-width: 1050px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 800px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }   
+}
+
+@media (max-width: 1000px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 700px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 925px) {
+    .proximo {
+        margin-left: 600px;
+    }
+}
+
+@media (max-width: 850px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 550px;
+    }
+}
+
+@media (max-width: 750px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 275px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 275px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }
+    .nav {
+        position: fixed;
+        top: 20px;
+        left: 0px;
+        bottom: 20px;
+        width: 75px;
+        box-sizing: initial;
+        border-radius: 10px;
+        border-left: 5px solid var(--cormenu);
+        background: var(--cormenu);
+        transition: width 0.5s ease-in-out;
+        overflow-x: hidden;
+    }
+    .nav.active {
+        width: 75px;
+    }
+    .botao {
+        margin-left: 215px;
+    }
+    .download-button {
+        margin: 25px 0px 50px 225px;
+    }
+    .texto {
+        margin-bottom: 15px;
+        margin: auto;
+        text-align: justify;
+        width: 400px;
+    }
+}
+
+@media (max-width: 565px) {
+    .anterior {
+        margin-left: 75px;
+    }
+    .proximo {
+        margin-left: 225px;
+    }
+    .texto {
+        margin-bottom: 15px;
+        margin-left: 75px;
+        text-align: justify;
+        width: 350px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 501px) {
+    .proximo {
+        margin-left: 300px;
+    }
+    .anterior {
+        margin-left: 25px;
+    }
+    .conteudo {
+        margin-top: 0px;
+        max-width: 475px;
+    }
+    .texto {
+        margin-bottom: 15px;
+        width: 425px;
+        text-align: justify;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    .botao {
+        margin-top: 25px;
+        margin-left: 195px;
+        margin-bottom: 50px;
+    }
+    .download-button {
+        margin: 25px 0px 50px 200px;
+    }
+}
